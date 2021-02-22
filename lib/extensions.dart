@@ -21,4 +21,11 @@ extension CustomWidgetExtensions on Widget {
       flex: flex ?? 1,
     );
   }
+
+  Widget flex({int flex}) {
+    return Flex(
+      direction: Axis.vertical,
+      children: [this],
+    );
+  }
 }

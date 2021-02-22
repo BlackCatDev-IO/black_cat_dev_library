@@ -59,6 +59,18 @@ Color hexToColor(String hexString, {String alphaChannel = 'FF'}) => Color(
 
 //Color deepBlue1 = hexToColor('#191b2a');
 
+/* -------------------------------------------------------------------------- */
+/*                                BUTTONSTYLES                                */
+/* -------------------------------------------------------------------------- */
+final ButtonStyle roundedWhiteButton = ElevatedButton.styleFrom(
+  primary: Colors.white12,
+  minimumSize: const Size(double.maxFinite, 50),
+  padding: const EdgeInsets.symmetric(horizontal: 16),
+  shape: const RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(10)),
+  ),
+);
+
 //------------------------------ TEXTSTYLES ---------------------------------
 
 // TextStyle kGoogleFontMontserrat = GoogleFonts.montserrat(
@@ -81,23 +93,6 @@ Color hexToColor(String hexString, {String alphaChannel = 'FF'}) => Color(
 //
 const TextStyle kGoogleFontOpenSansCondensed =
     TextStyle(fontFamily: 'OpenSans', fontSize: 22, color: Colors.white);
-//
-// TextStyle kGoogleFontOpenSans = GoogleFonts.openSans(
-//     textStyle: TextStyle(
-//   fontSize: 20.0,
-// ));
-//
-// TextStyle descriptionTextStyle = GoogleFonts.openSansCondensed(
-//   textStyle: TextStyle(fontSize: 30.0, color: Colors.blue),
-// );
-//
-// // TextStyle kOpenSansCondensed = GoogleFonts.openSansCondensed(
-// //   textStyle: TextStyle(fontSize: 30.0, color: Colors.amber),
-// // );
-//
-// TextStyle kOpenSans = GoogleFonts.openSans(
-//   textStyle: TextStyle(fontSize: 40.0, color: Colors.amber),
-// );
 
 // InputDecoration kTextFieldInputDecoration = InputDecoration(
 //   // focusColor: Colors.red,
@@ -121,3 +116,14 @@ const TextStyle kGoogleFontOpenSansCondensed =
 //   ),
 // );
 //
+
+const dialogTheme = DialogTheme(
+    backgroundColor: Colors.white,
+    titleTextStyle: dialogTitleTextStyle,
+    contentTextStyle: dialogContentTextStyle);
+
+const dialogTitleTextStyle =
+    TextStyle(color: Colors.black, fontFamily: 'Roboto', fontSize: 25);
+
+const dialogContentTextStyle =
+    TextStyle(color: Colors.black, fontFamily: 'Roboto', fontSize: 20);
