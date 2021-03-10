@@ -12,24 +12,25 @@ class MyTextWidget extends StatelessWidget {
   final double fontSize;
   final Color color;
   final double spacing;
+  final TextStyle textStyle;
 
   const MyTextWidget(
-      {Key key, this.text, this.fontSize, this.color, this.spacing})
-      : super(key: key);
+      {this.text, this.fontSize, this.color, this.spacing, this.textStyle});
   @override
   Widget build(BuildContext context) {
     return Text(
-      text != null ? text : ' ',
+      text ?? '',
       style: kGoogleFontOpenSansCondensed.copyWith(
-          fontSize: fontSize ?? 20,
-          color: color ?? Colors.white70,
-          letterSpacing: spacing ?? 1.0),
+        fontSize: fontSize ?? 20,
+        color: color ?? Colors.white70,
+        letterSpacing: spacing ?? 1.0,
+      ),
     );
   }
 }
 
 class DefaultButton extends StatelessWidget {
-  final Function onPressed;
+  final Function() onPressed;
   final String label;
   final Color buttonColor;
   final Color fontColor;
@@ -48,7 +49,7 @@ class DefaultButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
+    return TextButton(
       child: Text(
         label ?? '',
         style: TextStyle(
@@ -57,23 +58,22 @@ class DefaultButton extends StatelessWidget {
             fontWeight: FontWeight.w200),
       ),
       onPressed: onPressed,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          side: BorderSide(color: Colors.white24)),
-      color: buttonColor ?? Colors.black54,
-      minWidth: width ?? double.maxFinite,
-      height: height ?? 55,
+      style: TextButton.styleFrom(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            side: BorderSide(color: Colors.white24)),
+        primary: buttonColor ?? Colors.black54,
+        minimumSize: Size(width ?? double.maxFinite, height ?? 55),
+      ),
     );
   }
 }
 
 class PullToRefreshPage extends StatelessWidget {
-  final Function onRefresh;
+  final Future<void> Function() onRefresh;
   final Widget child;
 
-  const PullToRefreshPage(
-      {Key key, @required this.onRefresh, @required this.child})
-      : super(key: key);
+  PullToRefreshPage({@required this.onRefresh, @required this.child});
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
@@ -84,20 +84,19 @@ class PullToRefreshPage extends StatelessWidget {
 }
 
 class RoundedContainer extends StatelessWidget {
-  final double radius, height, width;
+  final double radius, height, width, borderWidth;
   final Color color;
   final Color borderColor;
   final Widget child;
 
   const RoundedContainer(
-      {Key key,
-      this.radius,
+      {this.radius,
       this.color,
       this.child,
       this.height,
       this.width,
-      this.borderColor})
-      : super(key: key);
+      this.borderColor,
+      this.borderWidth});
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +106,9 @@ class RoundedContainer extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius ?? 12),
         color: color ?? Colors.transparent,
-        border: Border.all(color: borderColor ?? Colors.transparent),
+        border: Border.all(
+            color: borderColor ?? Colors.transparent,
+            width: borderWidth ?? 1.0),
       ),
       child: child,
     );
@@ -118,7 +119,7 @@ class BlurFilter extends StatelessWidget {
   final Widget child;
   final double sigmaX;
   final double sigmaY;
-  BlurFilter({this.child, this.sigmaX = 5.0, this.sigmaY = 5.0});
+  BlurFilter({@required this.child, this.sigmaX = 5.0, this.sigmaY = 5.0});
 
   @override
   Widget build(BuildContext context) {
@@ -149,12 +150,11 @@ class MyCard extends StatelessWidget {
   final double elevation;
 
   const MyCard({
-    Key key,
     this.radius,
     this.color,
     this.elevation,
     this.child,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -174,8 +174,7 @@ class MyAssetImage extends StatelessWidget {
   final String path;
   final Color color;
 
-  const MyAssetImage({Key key, this.width, this.height, this.path, this.color})
-      : super(key: key);
+  const MyAssetImage({this.width, this.height, this.path, this.color});
   @override
   Widget build(BuildContext context) {
     return Image(
@@ -192,8 +191,7 @@ class MyImageContainer extends StatelessWidget {
   final Widget child;
   final String imagePath;
 
-  const MyImageContainer({Key key, this.child, @required this.imagePath})
-      : super(key: key);
+  const MyImageContainer({@required this.child, @required this.imagePath});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -209,8 +207,7 @@ class MyToggleSwitch extends StatefulWidget {
   final bool settingsBool;
   final Function onToggle;
 
-  const MyToggleSwitch({Key key, this.settingsBool, this.onToggle})
-      : super(key: key);
+  const MyToggleSwitch({@required this.settingsBool, @required this.onToggle});
   @override
   _MyToggleSwitchState createState() => _MyToggleSwitchState();
 }
