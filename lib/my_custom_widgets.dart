@@ -8,11 +8,10 @@ import 'package:get/get.dart';
 import 'constants.dart';
 
 class MyTextWidget extends StatelessWidget {
-  final String text;
-  final double fontSize;
-  final Color color;
-  final double spacing;
-  final TextStyle textStyle;
+  final String? text;
+  final double? fontSize, spacing;
+  final Color? color;
+  final TextStyle? textStyle;
 
   const MyTextWidget(
       {this.text, this.fontSize, this.color, this.spacing, this.textStyle});
@@ -32,15 +31,15 @@ class MyTextWidget extends StatelessWidget {
 class DefaultButton extends StatelessWidget {
   final Function() onPressed;
   final String label;
-  final Color buttonColor;
-  final Color fontColor;
-  final double height;
-  final double width;
-  final double fontSize;
+  final Color? buttonColor;
+  final Color? fontColor;
+  final double? height;
+  final double? width;
+  final double? fontSize;
 
   const DefaultButton(
-      {@required this.onPressed,
-      @required this.label,
+      {required this.onPressed,
+      required this.label,
       this.buttonColor,
       this.width,
       this.height,
@@ -51,7 +50,7 @@ class DefaultButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       child: Text(
-        label ?? '',
+        label,
         style: TextStyle(
             fontSize: fontSize ?? 15,
             color: fontColor ?? Colors.blueAccent[100],
@@ -73,7 +72,7 @@ class PullToRefreshPage extends StatelessWidget {
   final Future<void> Function() onRefresh;
   final Widget child;
 
-  PullToRefreshPage({@required this.onRefresh, @required this.child});
+  PullToRefreshPage({required this.onRefresh, required this.child});
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
@@ -84,15 +83,15 @@ class PullToRefreshPage extends StatelessWidget {
 }
 
 class RoundedContainer extends StatelessWidget {
-  final double radius, height, width, borderWidth;
-  final Color color;
-  final Color borderColor;
-  final Widget child;
+  final double? radius, height, width, borderWidth;
+  final Color? color;
+  final Color? borderColor;
+  final Widget? child;
 
   const RoundedContainer(
-      {this.radius,
+      {this.child,
+      this.radius,
       this.color,
-      this.child,
       this.height,
       this.width,
       this.borderColor,
@@ -119,7 +118,7 @@ class BlurFilter extends StatelessWidget {
   final Widget child;
   final double sigmaX;
   final double sigmaY;
-  BlurFilter({@required this.child, this.sigmaX = 5.0, this.sigmaY = 5.0});
+  BlurFilter({required this.child, this.sigmaX = 5.0, this.sigmaY = 5.0});
 
   @override
   Widget build(BuildContext context) {
@@ -144,10 +143,10 @@ class BlurFilter extends StatelessWidget {
 }
 
 class MyCard extends StatelessWidget {
-  final double radius;
-  final Widget child;
-  final Color color;
-  final double elevation;
+  final double? radius;
+  final Widget? child;
+  final Color? color;
+  final double? elevation;
 
   const MyCard({
     this.radius,
@@ -170,9 +169,9 @@ class MyCard extends StatelessWidget {
 }
 
 class MyAssetImage extends StatelessWidget {
-  final double width, height;
-  final String path;
-  final Color color;
+  final double? width, height;
+  final String? path;
+  final Color? color;
 
   const MyAssetImage({this.width, this.height, this.path, this.color});
   @override
@@ -191,7 +190,7 @@ class MyImageContainer extends StatelessWidget {
   final Widget child;
   final String imagePath;
 
-  const MyImageContainer({@required this.child, @required this.imagePath});
+  const MyImageContainer({required this.child, required this.imagePath});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -207,7 +206,7 @@ class MyToggleSwitch extends StatefulWidget {
   final bool settingsBool;
   final Function onToggle;
 
-  const MyToggleSwitch({@required this.settingsBool, @required this.onToggle});
+  const MyToggleSwitch({required this.settingsBool, required this.onToggle});
   @override
   _MyToggleSwitchState createState() => _MyToggleSwitchState();
 }
@@ -230,15 +229,16 @@ class _MyToggleSwitchState extends State<MyToggleSwitch> {
 class ObxToggleSwitch extends StatelessWidget {
   final RxBool settingsBool;
 
-  ObxToggleSwitch({@required this.settingsBool});
+  ObxToggleSwitch({required this.settingsBool});
 
   @override
   Widget build(BuildContext context) {
+    final bool settingsBoolValue = settingsBool.value;
     return ObxValue(
       (settingsBool) => Switch(
-        value: settingsBool.value,
+        value: settingsBoolValue,
         onChanged: (value) {
-          settingsBool.value =
+          value =
               value; // Rx has a _callable_ function! You could use (flag) => data.value = flag,
         },
       ),
