@@ -12,19 +12,25 @@ class MyTextWidget extends StatelessWidget {
   final double fontSize;
   final Color color;
   final double spacing;
+  final FontWeight fontWeight;
+  final String fontFamily;
 
   const MyTextWidget(
-      {Key key, this.text, this.fontSize, this.color, this.spacing})
-      : super(key: key);
+      {this.text,
+      this.fontSize,
+      this.color,
+      this.spacing,
+      this.fontWeight,
+      this.fontFamily});
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text != null ? text : ' ',
-      style: kGoogleFontOpenSansCondensed.copyWith(
-          fontSize: fontSize ?? 20,
-          color: color ?? Colors.white70,
-          letterSpacing: spacing ?? 1.0),
-    );
+    return Text(text ?? '',
+        style: kGoogleFontOpenSansCondensed.copyWith(
+            fontSize: fontSize ?? 20,
+            color: color ?? Colors.white70,
+            letterSpacing: spacing ?? 1.0,
+            fontWeight: fontWeight ?? FontWeight.normal,
+            fontFamily: fontFamily ?? 'OpenSans'));
   }
 }
 
@@ -84,7 +90,7 @@ class PullToRefreshPage extends StatelessWidget {
 }
 
 class RoundedContainer extends StatelessWidget {
-  final double radius, height, width;
+  final double radius, height, width, borderWidth;
   final Color color;
   final Color borderColor;
   final Widget child;
@@ -96,7 +102,8 @@ class RoundedContainer extends StatelessWidget {
       this.child,
       this.height,
       this.width,
-      this.borderColor})
+      this.borderColor,
+      this.borderWidth})
       : super(key: key);
 
   @override
@@ -107,7 +114,9 @@ class RoundedContainer extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius ?? 12),
         color: color ?? Colors.transparent,
-        border: Border.all(color: borderColor ?? Colors.transparent),
+        border: Border.all(
+            color: borderColor ?? Colors.transparent,
+            width: borderWidth ?? 1.0),
       ),
       child: child,
     );
@@ -159,7 +168,7 @@ class MyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: color ?? Colors.black54,
+      color: color ?? Colors.transparent,
       elevation: elevation ?? 20,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(radius ?? 15),
@@ -247,5 +256,158 @@ class ObxToggleSwitch extends StatelessWidget {
       ),
       false.obs,
     );
+  }
+}
+
+class LoginButtonWithIcon extends StatelessWidget {
+  final String text;
+  final Function onPressed;
+  final Icon icon;
+  final bool iconIsImage;
+  final String imageIcon;
+
+  const LoginButtonWithIcon({
+    Key key,
+    this.onPressed,
+    this.text,
+    this.icon,
+    this.iconIsImage,
+    this.imageIcon,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        onPressed();
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (!iconIsImage)
+            icon
+          else
+            ImageIcon(
+              AssetImage(imageIcon),
+              color: Colors.black,
+            ),
+          sizedBox5Wide,
+          Text(text, style: kGoogleFontOpenSansCondensed),
+        ],
+      ),
+    );
+  }
+
+  Widget weatherIcon() {
+    return !iconIsImage
+        ? icon
+        : ImageIcon(
+            AssetImage(imageIcon),
+            color: Colors.black,
+          );
+  }
+}
+
+class LoginButtonNoIcon extends StatelessWidget {
+  final String text;
+  final Function onPressed;
+
+  const LoginButtonNoIcon({
+    Key key,
+    this.onPressed,
+    this.text,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        onPressed();
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(text, style: kGoogleFontOpenSansCondensed),
+        ],
+      ),
+    );
+  }
+}
+
+class DefaultTextField extends StatelessWidget {
+  final int maxTitleLength;
+  final TextEditingController controller;
+  final String hintText;
+  final Color fillColor, borderColor;
+  final Function onChanged, onFieldSubmitted, onTap;
+  final double borderRadius;
+
+  const DefaultTextField(
+      {Key key,
+      this.maxTitleLength,
+      this.controller,
+      this.hintText,
+      this.fillColor,
+      this.borderColor,
+      this.onChanged,
+      this.borderRadius,
+      this.onFieldSubmitted,
+      this.onTap})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    bool obscureText;
+    if (hintText == 'Password') {
+      obscureText = true;
+    } else {
+      obscureText = false;
+    }
+    return TextFormField(
+      controller: controller,
+      onChanged: onChanged as void Function(String),
+      onFieldSubmitted: onFieldSubmitted as void Function(String),
+      textAlign: TextAlign.left,
+      textAlignVertical: TextAlignVertical.center,
+      maxLength: maxTitleLength,
+      obscureText: obscureText,
+      style: kGoogleFontOpenSansCondensed.copyWith(
+        color: fillColor,
+      ),
+      onTap: onTap as void Function(),
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: fillColor ?? Colors.transparent,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius ?? 12),
+          borderSide: BorderSide(color: borderColor ?? Colors.blue),
+        ),
+        hintText: hintText,
+        hintStyle: kGoogleFontOpenSansCondensed.copyWith(
+            fontSize: 19, color: Colors.grey[400]),
+        counterText: ' ',
+      ),
+    );
+  }
+}
+
+class CircleContainer extends StatelessWidget {
+  final Color color;
+  final double radius;
+  final Widget child;
+
+  const CircleContainer({this.color, @required this.radius, this.child});
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: Container(
+        width: radius,
+        height: radius,
+        decoration: BoxDecoration(
+          color: color ?? Colors.black38,
+          shape: BoxShape.circle,
+        ),
+        child: child,
+      ),
+    ).paddingSymmetric(horizontal: 10);
   }
 }
