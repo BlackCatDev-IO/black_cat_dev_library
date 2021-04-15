@@ -25,14 +25,14 @@ extension CustomWidgetExtensions on Widget {
     );
   }
 
-  Widget expanded({int flex}) {
+  Widget expanded({int? flex}) {
     return Expanded(
       child: this,
       flex: flex ?? 1,
     );
   }
 
-  Widget flex({int flex}) {
+  Widget flex({int? flex}) {
     return Flex(
       direction: Axis.vertical,
       children: [this],

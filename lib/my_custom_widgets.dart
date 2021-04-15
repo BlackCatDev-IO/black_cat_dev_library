@@ -9,14 +9,14 @@ import 'constants.dart';
 
 class MyTextWidget extends StatelessWidget {
   final String text;
-  final double fontSize;
-  final Color color;
-  final double spacing;
-  final FontWeight fontWeight;
-  final String fontFamily;
+  final double? fontSize;
+  final Color? color;
+  final double? spacing;
+  final FontWeight? fontWeight;
+  final String? fontFamily;
 
   const MyTextWidget(
-      {this.text,
+      {required this.text,
       this.fontSize,
       this.color,
       this.spacing,
@@ -24,7 +24,7 @@ class MyTextWidget extends StatelessWidget {
       this.fontFamily});
   @override
   Widget build(BuildContext context) {
-    return Text(text ?? '',
+    return Text(text,
         style: kGoogleFontOpenSansCondensed.copyWith(
             fontSize: fontSize ?? 20,
             color: color ?? Colors.white70,
@@ -36,14 +36,15 @@ class MyTextWidget extends StatelessWidget {
 
 class DefaultButton extends StatelessWidget {
   final Function onPressed;
-  final String label, fontFamily;
-  final Color buttonColor, fontColor;
-  final double height, width, fontSize;
-  final FontWeight fontWeight;
+  final String label;
+  final String? fontFamily;
+  final Color? buttonColor, fontColor;
+  final double? height, width, fontSize;
+  final FontWeight? fontWeight;
 
   const DefaultButton(
-      {@required this.onPressed,
-      @required this.label,
+      {required this.onPressed,
+      required this.label,
       this.buttonColor,
       this.width,
       this.height,
@@ -56,7 +57,7 @@ class DefaultButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       child: Text(
-        label ?? '',
+        label,
         style: TextStyle(
           fontSize: fontSize ?? 15,
           color: fontColor ?? Colors.blueAccent[100],
@@ -64,7 +65,7 @@ class DefaultButton extends StatelessWidget {
           fontFamily: 'Roboto',
         ),
       ),
-      onPressed: onPressed,
+      onPressed: onPressed as void Function(),
       style: TextButton.styleFrom(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
@@ -80,34 +81,30 @@ class PullToRefreshPage extends StatelessWidget {
   final Function onRefresh;
   final Widget child;
 
-  const PullToRefreshPage(
-      {Key key, @required this.onRefresh, @required this.child})
-      : super(key: key);
+  const PullToRefreshPage({required this.onRefresh, required this.child});
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-      onRefresh: onRefresh,
+      onRefresh: onRefresh as Future<void> Function(),
       child: child,
     );
   }
 }
 
 class RoundedContainer extends StatelessWidget {
-  final double radius, height, width, borderWidth;
-  final Color color;
-  final Color borderColor;
-  final Widget child;
+  final double? radius, height, width, borderWidth;
+  final Color? color;
+  final Color? borderColor;
+  final Widget? child;
 
   const RoundedContainer(
-      {Key key,
-      this.radius,
+      {this.radius,
       this.color,
       this.child,
       this.height,
       this.width,
       this.borderColor,
-      this.borderWidth})
-      : super(key: key);
+      this.borderWidth});
 
   @override
   Widget build(BuildContext context) {
@@ -130,7 +127,7 @@ class BlurFilter extends StatelessWidget {
   final Widget child;
   final double sigmaX;
   final double sigmaY;
-  BlurFilter({this.child, this.sigmaX = 5.0, this.sigmaY = 5.0});
+  BlurFilter({required this.child, this.sigmaX = 5.0, this.sigmaY = 5.0});
 
   @override
   Widget build(BuildContext context) {
@@ -155,18 +152,17 @@ class BlurFilter extends StatelessWidget {
 }
 
 class MyCard extends StatelessWidget {
-  final double radius;
+  final double? radius;
   final Widget child;
-  final Color color;
-  final double elevation;
+  final Color? color;
+  final double? elevation;
 
   const MyCard({
-    Key key,
     this.radius,
     this.color,
     this.elevation,
-    this.child,
-  }) : super(key: key);
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -182,20 +178,18 @@ class MyCard extends StatelessWidget {
 }
 
 class MyAssetImage extends StatelessWidget {
-  final double width, height;
+  final double? width, height;
   final String path;
-  final Color color;
+  final Color? color;
 
-  const MyAssetImage({Key key, this.width, this.height, this.path, this.color})
-      : super(key: key);
+  const MyAssetImage({this.width, this.height, required this.path, this.color});
   @override
   Widget build(BuildContext context) {
     return Image(
       width: width,
       height: height,
-      image: AssetImage(path ?? 'assets/icons/vclouds_icons/clear_day.png'),
+      image: AssetImage(path),
       color: color,
-      // color: Colors.black,
     );
   }
 }
@@ -204,8 +198,7 @@ class MyImageContainer extends StatelessWidget {
   final Widget child;
   final String imagePath;
 
-  const MyImageContainer({Key key, this.child, @required this.imagePath})
-      : super(key: key);
+  const MyImageContainer({required this.child, required this.imagePath});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -221,8 +214,7 @@ class MyToggleSwitch extends StatefulWidget {
   final bool settingsBool;
   final Function onToggle;
 
-  const MyToggleSwitch({Key key, this.settingsBool, this.onToggle})
-      : super(key: key);
+  const MyToggleSwitch({required this.settingsBool, required this.onToggle});
   @override
   _MyToggleSwitchState createState() => _MyToggleSwitchState();
 }
@@ -242,25 +234,25 @@ class _MyToggleSwitchState extends State<MyToggleSwitch> {
   }
 }
 
-class ObxToggleSwitch extends StatelessWidget {
-  final RxBool settingsBool;
+// class ObxToggleSwitch extends StatelessWidget {
+//   final RxBool settingsBool;
 
-  ObxToggleSwitch({@required this.settingsBool});
+//   ObxToggleSwitch({required this.settingsBool});
 
-  @override
-  Widget build(BuildContext context) {
-    return ObxValue(
-      (settingsBool) => Switch(
-        value: settingsBool.value,
-        onChanged: (value) {
-          settingsBool.value =
-              value; // Rx has a _callable_ function! You could use (flag) => data.value = flag,
-        },
-      ),
-      false.obs,
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return ObxValue(
+//       (settingsBool) => Switch(
+//         value: settingsBool.value!,
+//         onChanged: (value) {
+//           settingsBool.value =
+//               value; // Rx has a _callable_ function! You could use (flag) => data.value = flag,
+//         },
+//       ),
+//       false.obs,
+//     );
+//   }
+// }
 
 class LoginButtonWithIcon extends StatelessWidget {
   final String text;
@@ -270,13 +262,12 @@ class LoginButtonWithIcon extends StatelessWidget {
   final String imageIcon;
 
   const LoginButtonWithIcon({
-    Key key,
-    this.onPressed,
-    this.text,
-    this.icon,
-    this.iconIsImage,
-    this.imageIcon,
-  }) : super(key: key);
+    required this.onPressed,
+    required this.text,
+    required this.icon,
+    required this.iconIsImage,
+    required this.imageIcon,
+  });
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -315,10 +306,9 @@ class LoginButtonNoIcon extends StatelessWidget {
   final Function onPressed;
 
   const LoginButtonNoIcon({
-    Key key,
-    this.onPressed,
-    this.text,
-  }) : super(key: key);
+    required this.onPressed,
+    required this.text,
+  });
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -336,25 +326,23 @@ class LoginButtonNoIcon extends StatelessWidget {
 }
 
 class DefaultTextField extends StatelessWidget {
-  final int maxTitleLength;
+  final int? maxTitleLength;
   final TextEditingController controller;
-  final String hintText;
-  final Color fillColor, borderColor;
-  final Function onChanged, onFieldSubmitted, onTap;
-  final double borderRadius;
+  final String? hintText;
+  final Color? fillColor, borderColor;
+  final Function? onChanged, onFieldSubmitted, onTap;
+  final double? borderRadius;
 
   const DefaultTextField(
-      {Key key,
-      this.maxTitleLength,
-      this.controller,
+      {this.maxTitleLength,
+      required this.controller,
       this.hintText,
       this.fillColor,
       this.borderColor,
       this.onChanged,
       this.borderRadius,
       this.onFieldSubmitted,
-      this.onTap})
-      : super(key: key);
+      this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -393,11 +381,12 @@ class DefaultTextField extends StatelessWidget {
 }
 
 class CircleContainer extends StatelessWidget {
-  final Color color;
+  final Color? color;
   final double radius;
   final Widget child;
 
-  const CircleContainer({this.color, @required this.radius, this.child});
+  const CircleContainer(
+      {this.color, required this.radius, required this.child});
   @override
   Widget build(BuildContext context) {
     return Material(
