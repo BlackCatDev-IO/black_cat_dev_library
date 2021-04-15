@@ -2,11 +2,13 @@
 /// Original project at https://github.com/drtimcooper/LatLongToTimezone
 /// Original code at https://raw.githubusercontent.com/drtimcooper/LatLongToTimezone/master/src/main/java/com/skedgo/converter/TimezoneMapper.java
 
+import 'package:flutter/foundation.dart';
+
 /** The provided code is written by Tim Cooper:   tim@edval.com.au
 This code is available under the MIT licence:  https://opensource.org/licenses/MIT  */
 // class TimezoneMapper {
 
-String latLngToTimezoneString({required num lat,required num lng}) {
+String latLngToTimezoneString({@required num lat, @required num lng}) {
   String tzId = _timezoneStrings[_getTzInt(lat, lng)];
   return tzId;
 }

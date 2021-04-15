@@ -36,12 +36,10 @@ class MyTextWidget extends StatelessWidget {
 
 class DefaultButton extends StatelessWidget {
   final Function onPressed;
-  final String label;
-  final Color buttonColor;
-  final Color fontColor;
-  final double height;
-  final double width;
-  final double fontSize;
+  final String label, fontFamily;
+  final Color buttonColor, fontColor;
+  final double height, width, fontSize;
+  final FontWeight fontWeight;
 
   const DefaultButton(
       {@required this.onPressed,
@@ -50,25 +48,30 @@ class DefaultButton extends StatelessWidget {
       this.width,
       this.height,
       this.fontSize,
-      this.fontColor});
+      this.fontColor,
+      this.fontFamily,
+      this.fontWeight});
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
+    return TextButton(
       child: Text(
         label ?? '',
         style: TextStyle(
-            fontSize: fontSize ?? 15,
-            color: fontColor ?? Colors.blueAccent[100],
-            fontWeight: FontWeight.w200),
+          fontSize: fontSize ?? 15,
+          color: fontColor ?? Colors.blueAccent[100],
+          fontWeight: fontWeight ?? FontWeight.w200,
+          fontFamily: 'Roboto',
+        ),
       ),
       onPressed: onPressed,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          side: BorderSide(color: Colors.white24)),
-      color: buttonColor ?? Colors.black54,
-      minWidth: width ?? double.maxFinite,
-      height: height ?? 55,
+      style: TextButton.styleFrom(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            side: BorderSide(color: Colors.white24)),
+        backgroundColor: buttonColor ?? Colors.black54,
+        minimumSize: Size(width ?? double.maxFinite, height ?? 55),
+      ),
     );
   }
 }
