@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'constants.dart';
 
 class MyTextWidget extends StatelessWidget {
+
   final String text;
   final double? fontSize;
   final Color? color;
@@ -31,16 +32,34 @@ class MyTextWidget extends StatelessWidget {
             letterSpacing: spacing ?? 1.0,
             fontWeight: fontWeight ?? FontWeight.normal,
             fontFamily: fontFamily ?? 'OpenSans'));
+
+  const MyTextWidget(
+      {this.text, this.fontSize, this.color, this.spacing, this.textStyle});
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text ?? '',
+      style: kGoogleFontOpenSansCondensed.copyWith(
+        fontSize: fontSize ?? 20,
+        color: color ?? Colors.white70,
+        letterSpacing: spacing ?? 1.0,
+      ),
+    );
+
   }
 }
 
 class DefaultButton extends StatelessWidget {
-  final Function onPressed;
+  final Function() onPressed;
   final String label;
+
   final String? fontFamily;
   final Color? buttonColor, fontColor;
   final double? height, width, fontSize;
   final FontWeight? fontWeight;
+
+
+
 
   const DefaultButton(
       {required this.onPressed,
@@ -55,7 +74,9 @@ class DefaultButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return ElevatedButton(
+
       child: Text(
         label,
         style: TextStyle(
@@ -73,15 +94,29 @@ class DefaultButton extends StatelessWidget {
         backgroundColor: buttonColor ?? Colors.black54,
         minimumSize: Size(width ?? double.maxFinite, height ?? 55),
       ),
+
+      onPressed: onPressed,
+      style: TextButton.styleFrom(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            side: BorderSide(color: Colors.white24)),
+        primary: buttonColor ?? Colors.black54,
+        minimumSize: Size(width ?? double.maxFinite, height ?? 55),
+      ),
+
     );
   }
 }
 
 class PullToRefreshPage extends StatelessWidget {
-  final Function onRefresh;
+  final Future<void> Function() onRefresh;
   final Widget child;
 
+
   const PullToRefreshPage({required this.onRefresh, required this.child});
+
+  PullToRefreshPage({required this.onRefresh, required this.child});
+
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
@@ -97,10 +132,12 @@ class RoundedContainer extends StatelessWidget {
   final Color? borderColor;
   final Widget? child;
 
-  const RoundedContainer(
+
       {this.radius,
+
+      {this.child,
+
       this.color,
-      this.child,
       this.height,
       this.width,
       this.borderColor,
@@ -153,7 +190,10 @@ class BlurFilter extends StatelessWidget {
 
 class MyCard extends StatelessWidget {
   final double? radius;
+
   final Widget child;
+
+
   final Color? color;
   final double? elevation;
 
@@ -161,7 +201,9 @@ class MyCard extends StatelessWidget {
     this.radius,
     this.color,
     this.elevation,
+
     required this.child,
+
   });
 
   @override
@@ -179,10 +221,13 @@ class MyCard extends StatelessWidget {
 
 class MyAssetImage extends StatelessWidget {
   final double? width, height;
+
   final String path;
   final Color? color;
 
   const MyAssetImage({this.width, this.height, required this.path, this.color});
+
+
   @override
   Widget build(BuildContext context) {
     return Image(
@@ -333,6 +378,7 @@ class DefaultTextField extends StatelessWidget {
   final Function? onChanged, onFieldSubmitted, onTap;
   final double? borderRadius;
 
+
   const DefaultTextField(
       {this.maxTitleLength,
       required this.controller,
@@ -375,6 +421,20 @@ class DefaultTextField extends StatelessWidget {
         hintStyle: kGoogleFontOpenSansCondensed.copyWith(
             fontSize: 19, color: Colors.grey[400]),
         counterText: ' ',
+
+  ObxToggleSwitch({required this.settingsBool});
+
+  @override
+  Widget build(BuildContext context) {
+    final bool settingsBoolValue = settingsBool.value;
+    return ObxValue(
+      (settingsBool) => Switch(
+        value: settingsBoolValue,
+        onChanged: (value) {
+          value =
+              value; // Rx has a _callable_ function! You could use (flag) => data.value = flag,
+        },
+
       ),
     );
   }

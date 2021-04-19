@@ -6,13 +6,17 @@ homepage:
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=1.17.0"
+
+  flutter: ">=2.0.0"
+
 
 dependencies:
   flutter:
     sdk: flutter
 
+
   get: ^4.1.4 
+
 
 dev_dependencies:
   flutter_test:
