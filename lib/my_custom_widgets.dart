@@ -55,7 +55,7 @@ class DefaultButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return ElevatedButton(
       child: Text(
         label,
         style: TextStyle(
