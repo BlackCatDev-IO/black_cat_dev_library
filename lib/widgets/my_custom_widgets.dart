@@ -5,7 +5,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'constants.dart';
+import '../constants.dart';
 
 class MyTextWidget extends StatelessWidget {
   final String text;
@@ -233,26 +233,6 @@ class _MyToggleSwitchState extends State<MyToggleSwitch> {
     );
   }
 }
-
-// class ObxToggleSwitch extends StatelessWidget {
-//   final RxBool settingsBool;
-
-//   ObxToggleSwitch({required this.settingsBool});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ObxValue(
-//       (settingsBool) => Switch(
-//         value: settingsBool.value!,
-//         onChanged: (value) {
-//           settingsBool.value =
-//               value; // Rx has a _callable_ function! You could use (flag) => data.value = flag,
-//         },
-//       ),
-//       false.obs,
-//     );
-//   }
-// }
 
 class LoginButtonWithIcon extends StatelessWidget {
   final String text;
