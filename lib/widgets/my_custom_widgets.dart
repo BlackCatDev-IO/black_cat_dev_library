@@ -308,10 +308,11 @@ class LoginButtonNoIcon extends StatelessWidget {
 class DefaultTextField extends StatelessWidget {
   final int? maxTitleLength;
   final TextEditingController controller;
-  final String? hintText;
+  final String? hintText, fontFamily;
   final Color? fillColor, borderColor;
-  final Function? onChanged, onFieldSubmitted, onTap;
-  final double? borderRadius;
+  final ValueChanged<String>? onChanged, onFieldSubmitted;
+  final GestureTapCallback? onTap;
+  final double? borderRadius, hintSize, fontSize;
 
   const DefaultTextField(
       {this.maxTitleLength,
@@ -322,7 +323,10 @@ class DefaultTextField extends StatelessWidget {
       this.onChanged,
       this.borderRadius,
       this.onFieldSubmitted,
-      this.onTap});
+      this.onTap,
+      this.hintSize,
+      this.fontSize,
+      this.fontFamily});
 
   @override
   Widget build(BuildContext context) {
@@ -334,8 +338,8 @@ class DefaultTextField extends StatelessWidget {
     }
     return TextFormField(
       controller: controller,
-      onChanged: onChanged as void Function(String),
-      onFieldSubmitted: onFieldSubmitted as void Function(String),
+      onChanged: onChanged,
+      onFieldSubmitted: onFieldSubmitted,
       textAlign: TextAlign.left,
       textAlignVertical: TextAlignVertical.center,
       maxLength: maxTitleLength,
@@ -343,18 +347,21 @@ class DefaultTextField extends StatelessWidget {
       style: kGoogleFontOpenSansCondensed.copyWith(
         color: fillColor,
       ),
-      onTap: onTap as void Function(),
+      onTap: onTap,
       decoration: InputDecoration(
         filled: true,
         fillColor: fillColor ?? Colors.transparent,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius ?? 12),
-          borderSide: BorderSide(color: borderColor ?? Colors.blue),
+          borderSide: BorderSide(color: borderColor ?? Colors.black),
         ),
         hintText: hintText,
-        hintStyle: kGoogleFontOpenSansCondensed.copyWith(
-            fontSize: 19, color: Colors.grey[400]),
-        counterText: ' ',
+        hintStyle: TextStyle(
+            fontSize: hintSize ?? 19,
+            color: Colors.grey[600],
+            fontFamily: fontFamily ?? 'Roboto',
+            fontWeight: FontWeight.w200),
+        counterText: '',
       ),
     );
   }
