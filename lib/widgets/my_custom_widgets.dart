@@ -14,6 +14,8 @@ class MyTextWidget extends StatelessWidget {
   final double? spacing;
   final FontWeight? fontWeight;
   final String? fontFamily;
+  final TextStyle? textStyle;
+  final TextAlign? textAlign;
 
   const MyTextWidget(
       {required this.text,
@@ -21,16 +23,23 @@ class MyTextWidget extends StatelessWidget {
       this.color,
       this.spacing,
       this.fontWeight,
-      this.fontFamily});
+      this.fontFamily,
+      this.textStyle,
+      this.textAlign});
   @override
   Widget build(BuildContext context) {
-    return Text(text,
-        style: kGoogleFontOpenSansCondensed.copyWith(
+    return Text(
+      text,
+      textAlign: textAlign,
+      style: textStyle ??
+          TextStyle(
             fontSize: fontSize ?? 20,
             color: color ?? Colors.white70,
             letterSpacing: spacing ?? 1.0,
             fontWeight: fontWeight ?? FontWeight.normal,
-            fontFamily: fontFamily ?? 'OpenSans'));
+            fontFamily: fontFamily ?? 'OpenSans',
+          ),
+    );
   }
 }
 
@@ -114,6 +123,52 @@ class RoundedContainer extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius ?? 12),
         color: color ?? Colors.transparent,
+        border: Border.all(
+            color: borderColor ?? Colors.transparent,
+            width: borderWidth ?? 1.0),
+      ),
+      child: child,
+    );
+  }
+}
+
+class PartialRoundedContainer extends StatelessWidget {
+  final double? topLeft,
+      topRight,
+      bottomLeft,
+      bottomRight,
+      height,
+      width,
+      borderWidth;
+  final Color? color;
+  final Color? borderColor;
+  final Widget? child;
+
+  const PartialRoundedContainer(
+      {this.topLeft,
+      this.topRight,
+      this.bottomLeft,
+      this.bottomRight,
+      this.height,
+      this.width,
+      this.borderWidth,
+      this.color,
+      this.borderColor,
+      this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        color: color ?? Colors.transparent,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(topLeft ?? 10.0),
+          topRight: Radius.circular(topRight ?? 10.0),
+          bottomLeft: Radius.circular(bottomLeft ?? 0),
+          bottomRight: Radius.circular(bottomRight ?? 0),
+        ),
         border: Border.all(
             color: borderColor ?? Colors.transparent,
             width: borderWidth ?? 1.0),
@@ -313,6 +368,7 @@ class DefaultTextField extends StatelessWidget {
   final ValueChanged<String>? onChanged, onFieldSubmitted;
   final GestureTapCallback? onTap;
   final double? borderRadius, hintSize, fontSize;
+  final bool? autofocus;
 
   const DefaultTextField(
       {this.maxTitleLength,
@@ -326,7 +382,8 @@ class DefaultTextField extends StatelessWidget {
       this.onTap,
       this.hintSize,
       this.fontSize,
-      this.fontFamily});
+      this.fontFamily,
+      this.autofocus});
 
   @override
   Widget build(BuildContext context) {
@@ -338,6 +395,7 @@ class DefaultTextField extends StatelessWidget {
     }
     return TextFormField(
       controller: controller,
+      autofocus: true,
       onChanged: onChanged,
       onFieldSubmitted: onFieldSubmitted,
       textAlign: TextAlign.left,
@@ -349,12 +407,13 @@ class DefaultTextField extends StatelessWidget {
       ),
       onTap: onTap,
       decoration: InputDecoration(
-        filled: true,
+        filled: autofocus ?? false,
         fillColor: fillColor ?? Colors.transparent,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius ?? 12),
           borderSide: BorderSide(color: borderColor ?? Colors.black),
         ),
+        focusedBorder: InputBorder.none,
         hintText: hintText,
         hintStyle: TextStyle(
             fontSize: hintSize ?? 19,
@@ -369,18 +428,17 @@ class DefaultTextField extends StatelessWidget {
 
 class CircleContainer extends StatelessWidget {
   final Color? color;
-  final double radius;
+  final double size;
   final Widget child;
 
-  const CircleContainer(
-      {this.color, required this.radius, required this.child});
+  const CircleContainer({this.color, required this.size, required this.child});
   @override
   Widget build(BuildContext context) {
     return Material(
       color: Colors.transparent,
       child: Container(
-        width: radius,
-        height: radius,
+        width: size,
+        height: size,
         decoration: BoxDecoration(
           color: color ?? Colors.black38,
           shape: BoxShape.circle,
@@ -388,5 +446,45 @@ class CircleContainer extends StatelessWidget {
         child: child,
       ),
     ).paddingSymmetric(horizontal: 10);
+  }
+}
+
+class BorderTextStack extends StatelessWidget {
+  final String? text;
+  final double? fontSize, height;
+  final Color textColor, borderColor;
+
+  const BorderTextStack(
+      {this.text,
+      this.fontSize,
+      this.height,
+      required this.textColor,
+      required this.borderColor});
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Text(
+          text!,
+          style: kGoogleFontOpenSansCondensed.copyWith(
+            fontSize: fontSize ?? 20,
+            foreground: Paint()
+              ..style = PaintingStyle.stroke
+              ..strokeWidth = 1.5
+              ..color = borderColor,
+            height: height,
+          ),
+        ),
+        Text(
+          text!,
+          style: kGoogleFontOpenSansCondensed.copyWith(
+            color: textColor,
+            // color: Colors.white,
+            fontSize: fontSize ?? 20,
+            height: height,
+          ),
+        ),
+      ],
+    );
   }
 }

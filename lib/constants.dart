@@ -76,13 +76,13 @@ final ButtonStyle roundedWhiteButton = ElevatedButton.styleFrom(
 // TextStyle kGoogleFontMontserrat = GoogleFonts.montserrat(
 //   textStyle: TextStyle(fontSize: 20.0, color: Colors.blue),
 // );
-//
+
 // TextStyle kGoogleFontRaleway = GoogleFonts.raleway(
 //     textStyle: TextStyle(fontSize: 17.0, color: Colors.grey[400]));
-//
+
 // TextStyle kGoogleFontNunito = GoogleFonts.nunito(
 //     textStyle: TextStyle(fontSize: 17.0, color: Colors.grey[400]));
-//
+
 // TextStyle setLabelRow = GoogleFonts.nunito(
 //     textStyle: TextStyle(fontSize: 15.0, color: Colors.white70));
 
@@ -90,32 +90,10 @@ final ButtonStyle roundedWhiteButton = ElevatedButton.styleFrom(
 //     textStyle: TextStyle(
 //   fontSize: 20.0,
 // ));
-//
 const TextStyle kGoogleFontOpenSansCondensed =
     TextStyle(fontFamily: 'OpenSans', fontSize: 22, color: Colors.white);
 
-// InputDecoration kTextFieldInputDecoration = InputDecoration(
-//   // focusColor: Colors.red,
-//   // hoverColor: Colors.red,
-//   filled: true,
-//   // fillColor: kDefaultPurple,
-//   // focusedBorder: InputBorder(),
-//   // alignLabelWithHint: true,
-//   hintStyle: kGoogleFontMontserrat,
-//   border: OutlineInputBorder(
-//     borderRadius: BorderRadius.all(
-//       Radius.circular(10.0),
-//     ),
-//     borderSide: BorderSide(
-//       color: Colors.red,
-//       width: 5,
-//       style: BorderStyle.solid,
-//     ),
-//
-//     // borderSide: ,
-//   ),
-// );
-//
+
 
 final dialogTheme = DialogTheme(
     backgroundColor: Colors.grey[900],
