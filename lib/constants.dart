@@ -7,11 +7,15 @@ double screenHeight = Get.height;
 
 double screenWidth = Get.width;
 
-const SizedBox sizedBox10Wide = SizedBox(width: 10);
-const SizedBox sizedBox10High = SizedBox(height: 10);
-const SizedBox sizedBox10Square = SizedBox(height: 10, width: 10);
-const SizedBox sizedBox5Wide = SizedBox(width: 5);
-const SizedBox sizedBox5High = SizedBox(height: 5);
+const SizedBox sizedBox5Wide = const SizedBox(width: 5);
+const SizedBox sizedBox5High = const SizedBox(height: 5);
+const SizedBox sizedBox10Wide = const SizedBox(width: 10);
+const SizedBox sizedBox10High = const SizedBox(height: 10);
+const SizedBox sizedBox10Square = const SizedBox(height: 10, width: 10);
+const SizedBox sizedBox15Wide = const SizedBox(width: 15);
+const SizedBox sizedBox15High = const SizedBox(height: 15);
+const SizedBox sizedBox20Wide = const SizedBox(width: 20);
+const SizedBox sizedBox20High = const SizedBox(height: 20);
 
 //---------------------------------- COLORS ---------------------------------
 
@@ -92,8 +96,6 @@ final ButtonStyle roundedWhiteButton = ElevatedButton.styleFrom(
 // ));
 const TextStyle kGoogleFontOpenSansCondensed =
     TextStyle(fontFamily: 'OpenSans', fontSize: 22, color: Colors.white);
-
-
 
 final dialogTheme = DialogTheme(
     backgroundColor: Colors.grey[900],

@@ -33,58 +33,16 @@ class MyTextWidget extends StatelessWidget {
       textAlign: textAlign,
       style: textStyle ??
           TextStyle(
-            fontSize: fontSize ?? 20,
+            fontSize: fontSize ?? 16,
             color: color ?? Colors.white70,
             letterSpacing: spacing ?? 1.0,
-            fontWeight: fontWeight ?? FontWeight.normal,
-            fontFamily: fontFamily ?? 'OpenSans',
+            fontWeight: fontWeight ?? FontWeight.w300,
+            fontFamily: fontFamily ?? 'Roboto',
           ),
     );
   }
 }
 
-class DefaultButton extends StatelessWidget {
-  final Function onPressed;
-  final String label;
-  final String? fontFamily;
-  final Color? buttonColor, fontColor;
-  final double? height, width, fontSize;
-  final FontWeight? fontWeight;
-
-  const DefaultButton(
-      {required this.onPressed,
-      required this.label,
-      this.buttonColor,
-      this.width,
-      this.height,
-      this.fontSize,
-      this.fontColor,
-      this.fontFamily,
-      this.fontWeight});
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      child: Text(
-        label,
-        style: TextStyle(
-          fontSize: fontSize ?? 15,
-          color: fontColor ?? Colors.blueAccent[100],
-          fontWeight: fontWeight ?? FontWeight.w200,
-          fontFamily: 'Roboto',
-        ),
-      ),
-      onPressed: onPressed as void Function(),
-      style: TextButton.styleFrom(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-            side: BorderSide(color: Colors.white24)),
-        backgroundColor: buttonColor ?? Colors.black54,
-        minimumSize: Size(width ?? double.maxFinite, height ?? 55),
-      ),
-    );
-  }
-}
 
 class PullToRefreshPage extends StatelessWidget {
   final Function onRefresh;
@@ -164,8 +122,8 @@ class PartialRoundedContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: color ?? Colors.transparent,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(topLeft ?? 10.0),
-          topRight: Radius.circular(topRight ?? 10.0),
+          topLeft: Radius.circular(topLeft ?? 0),
+          topRight: Radius.circular(topRight ?? 0),
           bottomLeft: Radius.circular(bottomLeft ?? 0),
           bottomRight: Radius.circular(bottomRight ?? 0),
         ),
@@ -289,76 +247,7 @@ class _MyToggleSwitchState extends State<MyToggleSwitch> {
   }
 }
 
-class LoginButtonWithIcon extends StatelessWidget {
-  final String text;
-  final Function onPressed;
-  final Icon icon;
-  final bool iconIsImage;
-  final String imageIcon;
 
-  const LoginButtonWithIcon({
-    required this.onPressed,
-    required this.text,
-    required this.icon,
-    required this.iconIsImage,
-    required this.imageIcon,
-  });
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        onPressed();
-      },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          if (!iconIsImage)
-            icon
-          else
-            ImageIcon(
-              AssetImage(imageIcon),
-              color: Colors.black,
-            ),
-          sizedBox5Wide,
-          Text(text, style: kGoogleFontOpenSansCondensed),
-        ],
-      ),
-    );
-  }
-
-  Widget weatherIcon() {
-    return !iconIsImage
-        ? icon
-        : ImageIcon(
-            AssetImage(imageIcon),
-            color: Colors.black,
-          );
-  }
-}
-
-class LoginButtonNoIcon extends StatelessWidget {
-  final String text;
-  final Function onPressed;
-
-  const LoginButtonNoIcon({
-    required this.onPressed,
-    required this.text,
-  });
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        onPressed();
-      },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(text, style: kGoogleFontOpenSansCondensed),
-        ],
-      ),
-    );
-  }
-}
 
 class DefaultTextField extends StatelessWidget {
   final int? maxTitleLength;

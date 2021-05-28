@@ -32,7 +32,7 @@ extension CustomWidgetExtensions on Widget {
     );
   }
 
-  Widget flex({int? flex}) {
+  Widget flex() {
     return Flex(
       direction: Axis.vertical,
       children: [this],
