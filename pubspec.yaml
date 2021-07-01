@@ -1,22 +1,19 @@
 name: black_cat_lib
 description: A new Flutter package.
 version: 0.0.1
-author:
-homepage:
+author: null
+homepage: null
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
   flutter: ">=2.0.0"
 
-
 dependencies:
   flutter:
     sdk: flutter
-
-
-  get: ^4.1.4 
-
+  flutter_screenutil: ^5.0.0+2
+  get: ^4.1.4
 
 dev_dependencies:
   flutter_test:
@@ -24,7 +21,6 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter.
 flutter:
   fonts:
@@ -43,7 +39,6 @@ flutter:
   #
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
-
   # To add custom fonts to your package, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a

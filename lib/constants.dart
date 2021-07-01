@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 //--------------------- Screensize & SizedBoxes -----------------------------
-
-double screenHeight = Get.height;
-
-double screenWidth = Get.width;
 
 const SizedBox sizedBox5Wide = const SizedBox(width: 5);
 const SizedBox sizedBox5High = const SizedBox(height: 5);
@@ -61,7 +56,6 @@ Color hexToColor(String hexString, {String alphaChannel = 'FF'}) => Color(
       ),
     );
 
-//Color deepBlue1 = hexToColor('#191b2a');
 
 /* -------------------------------------------------------------------------- */
 /*                                BUTTONSTYLES                                */
@@ -77,25 +71,6 @@ final ButtonStyle roundedWhiteButton = ElevatedButton.styleFrom(
 
 //------------------------------ TEXTSTYLES ---------------------------------
 
-// TextStyle kGoogleFontMontserrat = GoogleFonts.montserrat(
-//   textStyle: TextStyle(fontSize: 20.0, color: Colors.blue),
-// );
-
-// TextStyle kGoogleFontRaleway = GoogleFonts.raleway(
-//     textStyle: TextStyle(fontSize: 17.0, color: Colors.grey[400]));
-
-// TextStyle kGoogleFontNunito = GoogleFonts.nunito(
-//     textStyle: TextStyle(fontSize: 17.0, color: Colors.grey[400]));
-
-// TextStyle setLabelRow = GoogleFonts.nunito(
-//     textStyle: TextStyle(fontSize: 15.0, color: Colors.white70));
-
-// TextStyle kGoogleFontOpenSansCondensed = GoogleFonts.openSansCondensed(
-//     textStyle: TextStyle(
-//   fontSize: 20.0,
-// ));
-const TextStyle kGoogleFontOpenSansCondensed =
-    TextStyle(fontFamily: 'OpenSans', fontSize: 22, color: Colors.white);
 
 final dialogTheme = DialogTheme(
     backgroundColor: Colors.grey[900],

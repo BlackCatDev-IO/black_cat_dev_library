@@ -35,14 +35,13 @@ class MyTextWidget extends StatelessWidget {
           TextStyle(
             fontSize: fontSize ?? 16,
             color: color ?? Colors.white70,
-            letterSpacing: spacing ?? 1.0,
+            letterSpacing: spacing,
             fontWeight: fontWeight ?? FontWeight.w300,
             fontFamily: fontFamily ?? 'Roboto',
           ),
     );
   }
 }
-
 
 class PullToRefreshPage extends StatelessWidget {
   final Function onRefresh;
@@ -210,11 +209,14 @@ class MyAssetImage extends StatelessWidget {
 class MyImageContainer extends StatelessWidget {
   final Widget child;
   final String imagePath;
+  final double? width, height;
 
-  const MyImageContainer({required this.child, required this.imagePath});
+  const MyImageContainer({required this.child, required this.imagePath, this.width, this.height});
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: height,
+      width: width,
       decoration: BoxDecoration(
         image: DecorationImage(image: AssetImage(imagePath), fit: BoxFit.cover),
       ),
@@ -247,17 +249,16 @@ class _MyToggleSwitchState extends State<MyToggleSwitch> {
   }
 }
 
-
-
 class DefaultTextField extends StatelessWidget {
   final int? maxTitleLength;
   final TextEditingController controller;
   final String? hintText, fontFamily;
-  final Color? fillColor, borderColor;
+  final Color? fillColor, borderColor, textColor;
   final ValueChanged<String>? onChanged, onFieldSubmitted;
   final GestureTapCallback? onTap;
   final double? borderRadius, hintSize, fontSize;
   final bool? autofocus;
+  final FontWeight? fontWeight;
 
   const DefaultTextField(
       {this.maxTitleLength,
@@ -272,7 +273,9 @@ class DefaultTextField extends StatelessWidget {
       this.hintSize,
       this.fontSize,
       this.fontFamily,
-      this.autofocus});
+      this.autofocus,
+      this.textColor,
+      this.fontWeight});
 
   @override
   Widget build(BuildContext context) {
@@ -291,8 +294,10 @@ class DefaultTextField extends StatelessWidget {
       textAlignVertical: TextAlignVertical.center,
       maxLength: maxTitleLength,
       obscureText: obscureText,
-      style: kGoogleFontOpenSansCondensed.copyWith(
-        color: fillColor,
+      style: TextStyle(
+        color: textColor ?? Colors.white,
+        fontWeight: fontWeight ?? FontWeight.w300,
+        fontSize: fontSize ?? 20,
       ),
       onTap: onTap,
       decoration: InputDecoration(
@@ -374,6 +379,44 @@ class BorderTextStack extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class MyRichTextWidget extends StatelessWidget {
+  final String text1, text2;
+  final Color text1Color, text2Color;
+  final double text1FontSize, text2FontSize;
+  final FontWeight? text1FontWeight, text2FontWeight;
+
+  const MyRichTextWidget(
+      {required this.text1,
+      required this.text2,
+      required this.text1Color,
+      required this.text2Color,
+      required this.text1FontSize,
+      required this.text2FontSize,
+      this.text1FontWeight,
+      this.text2FontWeight});
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        text: text1,
+        style: TextStyle(
+            color: text1Color,
+            fontWeight: text1FontWeight ?? FontWeight.normal,
+            decoration: TextDecoration.underline),
+        children: [
+          TextSpan(
+            text: text2,
+            style: TextStyle(
+                color: text2Color,
+                fontWeight: text2FontWeight ?? FontWeight.normal,
+                decoration: TextDecoration.underline),
+          )
+        ],
+      ),
     );
   }
 }
