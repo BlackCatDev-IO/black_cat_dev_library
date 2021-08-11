@@ -80,7 +80,7 @@ class LoginButtonWithIcon extends StatelessWidget {
               color: Colors.black,
             ),
           sizedBox5Wide,
-          Text(text, style: kGoogleFontOpenSansCondensed),
+          Text(text),
         ],
       ),
     );
@@ -113,7 +113,7 @@ class LoginButtonNoIcon extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(text, style: kGoogleFontOpenSansCondensed),
+          Text(text ),
         ],
       ),
     );

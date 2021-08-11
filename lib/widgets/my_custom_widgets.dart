@@ -5,7 +5,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../constants.dart';
 
 class MyTextWidget extends StatelessWidget {
   final String text;
@@ -360,7 +359,7 @@ class BorderTextStack extends StatelessWidget {
       children: [
         Text(
           text!,
-          style: kGoogleFontOpenSansCondensed.copyWith(
+          style: TextStyle(
             fontSize: fontSize ?? 20,
             foreground: Paint()
               ..style = PaintingStyle.stroke
@@ -371,7 +370,7 @@ class BorderTextStack extends StatelessWidget {
         ),
         Text(
           text!,
-          style: kGoogleFontOpenSansCondensed.copyWith(
+          style: TextStyle(
             color: textColor,
             // color: Colors.white,
             fontSize: fontSize ?? 20,
