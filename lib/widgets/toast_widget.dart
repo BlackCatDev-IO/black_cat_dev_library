@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ToastWidget extends StatelessWidget {
   const ToastWidget(
@@ -16,6 +17,7 @@ class ToastWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: (Get.width - 20),
       padding: EdgeInsets.symmetric(
           horizontal: horizontalPadding ?? 24.0,
           vertical: verticalPadding ?? 12.0),
@@ -23,9 +25,15 @@ class ToastWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
         color: backgroundColor ?? Colors.white,
       ),
-      child: Text(
-        toastText,
-        style: TextStyle(color: textColor ?? Colors.black),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              toastText,
+              style: TextStyle(color: textColor ?? Colors.black),
+            ),
+          ),
+        ],
       ),
     );
   }
