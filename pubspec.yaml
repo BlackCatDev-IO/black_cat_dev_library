@@ -1,7 +1,6 @@
 name: black_cat_lib
 description: A new Flutter package.
 version: 0.0.1
-author: null
 homepage: null
 
 environment:
@@ -10,9 +9,11 @@ environment:
   flutter: ">=2.0.0"
 
 dependencies:
+  dart_date: ^1.1.0
   flutter:
     sdk: flutter
   flutter_screenutil: ^5.0.0+2
+  fluttertoast: ^8.0.8
   get: ^4.1.4
 
 dev_dependencies:

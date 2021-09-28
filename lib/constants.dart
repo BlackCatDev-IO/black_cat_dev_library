@@ -35,7 +35,8 @@ Color kNeonYellow = hexToColor('#fcfb26');
 
 //------------------------------ DYNAMIC THEME COLORS ---------------------------------
 
-Color accentColor(BuildContext context) => Theme.of(context).accentColor;
+Color accentColor(BuildContext context) =>
+    Theme.of(context).colorScheme.secondary;
 
 Color primaryColor(BuildContext context) => Theme.of(context).primaryColor;
 
@@ -56,7 +57,6 @@ Color hexToColor(String hexString, {String alphaChannel = 'FF'}) => Color(
       ),
     );
 
-
 /* -------------------------------------------------------------------------- */
 /*                                BUTTONSTYLES                                */
 /* -------------------------------------------------------------------------- */
@@ -70,7 +70,6 @@ final ButtonStyle roundedWhiteButton = ElevatedButton.styleFrom(
 );
 
 //------------------------------ TEXTSTYLES ---------------------------------
-
 
 final dialogTheme = DialogTheme(
     backgroundColor: Colors.grey[900],

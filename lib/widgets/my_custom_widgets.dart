@@ -5,7 +5,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class MyTextWidget extends StatelessWidget {
   final String text;
   final double? fontSize;
@@ -210,7 +209,8 @@ class MyImageContainer extends StatelessWidget {
   final String imagePath;
   final double? width, height;
 
-  const MyImageContainer({required this.child, required this.imagePath, this.width, this.height});
+  const MyImageContainer(
+      {required this.child, required this.imagePath, this.width, this.height});
   @override
   Widget build(BuildContext context) {
     return Container(
