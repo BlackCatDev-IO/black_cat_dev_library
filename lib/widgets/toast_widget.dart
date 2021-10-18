@@ -27,7 +27,7 @@ class ToastWidget extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Expanded(
+          Flexible(
             child: Text(
               toastText,
               style: TextStyle(color: textColor ?? Colors.black),

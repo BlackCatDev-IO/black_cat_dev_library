@@ -6,16 +6,23 @@ extension DateTimeExtensions on DateTime {
     return isWithinRange(startTime, endTime);
   }
 
-  bool isBetween({required DateTime startTime, required DateTime endTime}) {
-    final start = startTime.toUtc();
-    final end = endTime.toUtc();
-    final utc = this.toUtc();
+  bool isBetween(
+      {required DateTime startTime,
+      required DateTime endTime,
+      required String method,
+      Duration? offset}) {
+    return this.isAfter(startTime) && this.isBefore(endTime);
+  }
 
-    if (utc.isAfter(start) && utc.isBefore(end)) {
-      return true;
-    } else {
-      return false;
-    }
+  bool isSameTimeOrBetween(
+      {required DateTime startTime,
+      required DateTime endTime,
+      required String method,
+      Duration? offset}) {
+    final isBetween = this.isAfter(startTime) && this.isBefore(endTime);
+    final isSameTime = this.isEqual(startTime) || this.isEqual(endTime);
+
+    return isBetween || isSameTime;
   }
 
   bool isSameTime({required DateTime comparisonTime}) {
@@ -24,8 +31,7 @@ extension DateTimeExtensions on DateTime {
   }
 
   DateTime roundedDownToNearestHour() {
-    final startOfHour = this.startOfHour;
-    return startOfHour;
+    return this.startOfHour;
   }
 
   DateTime roundedUpToNearestHour() {
