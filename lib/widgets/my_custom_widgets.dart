@@ -304,7 +304,7 @@ class DefaultTextField extends StatelessWidget {
       ),
       onTap: onTap,
       decoration: InputDecoration(
-        filled: autofocus ?? false,
+        filled: autoFocus ?? false,
         fillColor: fillColor ?? Colors.transparent,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius ?? 12),
