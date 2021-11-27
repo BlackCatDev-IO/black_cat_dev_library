@@ -512,3 +512,14 @@ class _MyScrollbarState extends State<MyScrollbar> {
     );
   }
 }
+
+class NotchDependentSafeArea extends StatelessWidget {
+  final Widget child;
+  final bool hasNotch;
+  const NotchDependentSafeArea({required this.child, required this.hasNotch});
+
+  @override
+  Widget build(BuildContext context) {
+    return hasNotch ? child : SafeArea(child: child);
+  }
+}
