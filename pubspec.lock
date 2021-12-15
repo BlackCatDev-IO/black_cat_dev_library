@@ -100,6 +100,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.17.0"
+  iphone_has_notch:
+    dependency: "direct main"
+    description:
+      name: iphone_has_notch
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   js:
     dependency: transitive
     description:

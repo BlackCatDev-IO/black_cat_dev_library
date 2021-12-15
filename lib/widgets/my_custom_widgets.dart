@@ -4,6 +4,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iphone_has_notch/iphone_has_notch.dart';
 
 class MyTextWidget extends StatelessWidget {
   final String text;
@@ -515,11 +516,10 @@ class _MyScrollbarState extends State<MyScrollbar> {
 
 class NotchDependentSafeArea extends StatelessWidget {
   final Widget child;
-  final bool hasNotch;
-  const NotchDependentSafeArea({required this.child, required this.hasNotch});
+  const NotchDependentSafeArea({required this.child});
 
   @override
   Widget build(BuildContext context) {
-    return hasNotch ? child : SafeArea(child: child);
+    return IphoneHasNotch.hasNotch ? child : SafeArea(child: child);
   }
 }

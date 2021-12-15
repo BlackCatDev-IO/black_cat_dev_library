@@ -10,7 +10,7 @@ extension CapExtension on String {
 
   String get capitalizeFirstWord => this.split(" ").map((str) => str).join(" ");
 
-  bool get hasNumber => this._hasNumber(this);
+  bool get hasNumber => _hasNumber(this);
 
   bool _hasNumber(String str) {
     bool hasNumber = false;

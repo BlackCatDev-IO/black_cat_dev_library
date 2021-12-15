@@ -14,6 +14,8 @@ dependencies:
     sdk: flutter
   flutter_screenutil: ^5.0.0+2
   fluttertoast: ^8.0.8
+  iphone_has_notch: ^1.0.0
+
   get: ^4.1.4
 
 dev_dependencies:
