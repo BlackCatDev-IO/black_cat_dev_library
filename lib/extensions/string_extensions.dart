@@ -21,6 +21,14 @@ extension CapExtension on String {
     }
     return hasNumber;
   }
+
+  List<String> splitWordList() {
+    final wordList = <String>[];
+    for (final word in this.split(' ')) {
+      wordList.add(word);
+    }
+    return wordList;
+  }
 }
 
 final _numeric = RegExp(r'^-?[0-9]+$');
