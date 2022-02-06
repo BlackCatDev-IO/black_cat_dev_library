@@ -1,3 +1,5 @@
+import 'dart:math';
+
 extension Range on num {
   bool isBetween({required num from, required num to}) {
     return from < this && this < to;
@@ -11,5 +13,12 @@ extension Range on num {
     } else {
       return false;
     }
+  }
+}
+
+extension Precision on double {
+  double toPrecision(int fractionDigits) {
+    var mod = pow(10, fractionDigits.toDouble()).toDouble();
+    return ((this * mod).round().toDouble() / mod);
   }
 }
