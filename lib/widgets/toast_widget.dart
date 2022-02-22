@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class ToastWidget extends StatelessWidget {
   const ToastWidget(
@@ -16,8 +15,9 @@ class ToastWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Container(
-      width: (Get.width - 20),
+      width: (width - 20),
       padding: EdgeInsets.symmetric(
           horizontal: horizontalPadding ?? 24.0,
           vertical: verticalPadding ?? 12.0),

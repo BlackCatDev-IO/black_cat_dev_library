@@ -3,7 +3,6 @@ library black_cat_lib;
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iphone_has_notch/iphone_has_notch.dart';
 
 class MyTextWidget extends StatelessWidget {
@@ -333,18 +332,21 @@ class CircleContainer extends StatelessWidget {
   const CircleContainer({this.color, required this.size, required this.child});
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: Container(
-        width: size,
-        height: size,
-        decoration: BoxDecoration(
-          color: color ?? Colors.black38,
-          shape: BoxShape.circle,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: Material(
+        color: Colors.transparent,
+        child: Container(
+          width: size,
+          height: size,
+          decoration: BoxDecoration(
+            color: color ?? Colors.black38,
+            shape: BoxShape.circle,
+          ),
+          child: child,
         ),
-        child: child,
       ),
-    ).paddingSymmetric(horizontal: 10);
+    );
   }
 }
 
