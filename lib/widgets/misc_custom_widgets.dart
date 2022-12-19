@@ -65,6 +65,7 @@ class _MyScrollbarState extends State<MyScrollbar> {
   void initState() {
     super.initState();
     _scrollController = widget.scrollController ?? ScrollController();
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _updateScrollPainter(_scrollController.position);
     });
