@@ -42,14 +42,21 @@ packages:
       name: collection
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.15.0"
+    version: "1.16.0"
+  dart_date:
+    dependency: "direct main"
+    description:
+      name: dart_date
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.1"
   fake_async:
     dependency: transitive
     description:
       name: fake_async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.0"
+    version: "1.3.0"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -66,14 +73,42 @@ packages:
       name: get
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.1.4"
+    version: "8.1.2"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.17.0"
+  iphone_has_notch:
+    dependency: "direct main"
+    description:
+      name: iphone_has_notch
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
+  js:
+    dependency: transitive
+    description:
+      name: js
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.4"
   matcher:
     dependency: transitive
     description:
       name: matcher
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.12.10"
+    version: "0.12.11"
+  material_color_utilities:
+    dependency: transitive
+    description:
+      name: material_color_utilities
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.4"
   meta:
     dependency: transitive
     description:
@@ -87,7 +122,7 @@ packages:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.0"
+    version: "1.8.1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -99,7 +134,7 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.0"
+    version: "1.8.2"
   stack_trace:
     dependency: transitive
     description:
@@ -134,21 +169,21 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.19"
-  typed_data:
+    version: "0.4.9"
+  timeago:
     dependency: transitive
     description:
-      name: typed_data
+      name: timeago
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.0"
+    version: "3.3.0"
   vector_math:
     dependency: transitive
     description:
       name: vector_math
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.0"
+    version: "2.1.2"
 sdks:
-  dart: ">=2.12.0 <3.0.0"
-  flutter: ">=1.17.0"
+  dart: ">=2.17.0-0 <3.0.0"
+  flutter: ">=2.0.0"
