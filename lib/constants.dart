@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 //--------------------- Screensize & SizedBoxes -----------------------------
 
-double screenHeight = Get.height;
-
-double screenWidth = Get.width;
-
-const SizedBox sizedBox10Wide = SizedBox(width: 10);
-const SizedBox sizedBox10High = SizedBox(height: 10);
-const SizedBox sizedBox10Square = SizedBox(height: 10, width: 10);
-const SizedBox sizedBox5Wide = SizedBox(width: 5);
-const SizedBox sizedBox5High = SizedBox(height: 5);
+const SizedBox sizedBox5Wide = const SizedBox(width: 5);
+const SizedBox sizedBox5High = const SizedBox(height: 5);
+const SizedBox sizedBox10Wide = const SizedBox(width: 10);
+const SizedBox sizedBox10High = const SizedBox(height: 10);
+const SizedBox sizedBox10Square = const SizedBox(height: 10, width: 10);
+const SizedBox sizedBox15Wide = const SizedBox(width: 15);
+const SizedBox sizedBox15High = const SizedBox(height: 15);
+const SizedBox sizedBox20Wide = const SizedBox(width: 20);
+const SizedBox sizedBox20High = const SizedBox(height: 20);
 
 //---------------------------------- COLORS ---------------------------------
 
@@ -58,8 +57,6 @@ Color hexToColor(String hexString, {String alphaChannel = 'FF'}) => Color(
       ),
     );
 
-//Color deepBlue1 = hexToColor('#191b2a');
-
 /* -------------------------------------------------------------------------- */
 /*                                BUTTONSTYLES                                */
 /* -------------------------------------------------------------------------- */
@@ -74,16 +71,25 @@ final ButtonStyle roundedWhiteButton = ElevatedButton.styleFrom(
 
 //------------------------------ TEXTSTYLES ---------------------------------
 
-const TextStyle kGoogleFontOpenSansCondensed =
-    TextStyle(fontFamily: 'OpenSans', fontSize: 22, color: Colors.white);
-
-const dialogTheme = DialogTheme(
-    backgroundColor: Colors.white,
+final dialogTheme = DialogTheme(
+    backgroundColor: Colors.grey[900],
     titleTextStyle: dialogTitleTextStyle,
     contentTextStyle: dialogContentTextStyle);
 
-const dialogTitleTextStyle =
-    TextStyle(color: Colors.black, fontFamily: 'Roboto', fontSize: 25);
+const dialogTitleTextStyle = TextStyle(
+    color: Colors.white70,
+    fontFamily: 'Roboto',
+    fontSize: 23,
+    fontWeight: FontWeight.w300);
 
-const dialogContentTextStyle =
-    TextStyle(color: Colors.black, fontFamily: 'Roboto', fontSize: 20);
+const dialogContentTextStyle = TextStyle(
+    color: Colors.white54,
+    fontFamily: 'Roboto',
+    fontSize: 19,
+    fontWeight: FontWeight.w300);
+
+const dialogActionTextStyle = TextStyle(
+    color: Colors.blue,
+    fontFamily: 'Roboto',
+    fontSize: 20,
+    fontWeight: FontWeight.w300);

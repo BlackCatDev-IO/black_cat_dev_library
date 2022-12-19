@@ -43,6 +43,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.16.0"
+  dart_date:
+    dependency: "direct main"
+    description:
+      name: dart_date
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.1"
   fake_async:
     dependency: transitive
     description:
@@ -60,13 +67,39 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  get:
+  flutter_web_plugins:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  fluttertoast:
     dependency: "direct main"
     description:
-      name: get
+      name: fluttertoast
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.6.5"
+    version: "8.1.2"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.17.0"
+  iphone_has_notch:
+    dependency: "direct main"
+    description:
+      name: iphone_has_notch
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
+  js:
+    dependency: transitive
+    description:
+      name: js
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.4"
   matcher:
     dependency: transitive
     description:
@@ -142,6 +175,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.9"
+  timeago:
+    dependency: transitive
+    description:
+      name: timeago
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.3.0"
   vector_math:
     dependency: transitive
     description:
@@ -151,4 +191,4 @@ packages:
     version: "2.1.2"
 sdks:
   dart: ">=2.17.0-0 <3.0.0"
-  flutter: ">=1.17.0"
+  flutter: ">=2.0.0"

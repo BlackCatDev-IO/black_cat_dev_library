@@ -1,3 +1,10 @@
-export 'package:black_cat_lib/my_custom_widgets.dart';
-export 'package:black_cat_lib/extensions.dart';
+export 'package:black_cat_lib/widgets/misc_custom_widgets.dart';
+export 'package:black_cat_lib/widgets/containers_cards.dart';
+export 'package:black_cat_lib/widgets/image_widgets.dart';
+export 'package:black_cat_lib/widgets/text_widgets.dart';
+export 'package:black_cat_lib/widgets/textfields.dart';
+export 'package:black_cat_lib/widgets/blur_filters.dart';
+export 'package:black_cat_lib/extensions/extensions.dart';
 export 'package:black_cat_lib/constants.dart';
+export 'package:black_cat_lib/widgets/buttons.dart';
+export 'package:black_cat_lib/toasts/my_toasts.dart';
