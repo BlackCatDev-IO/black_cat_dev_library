@@ -3,7 +3,7 @@ description: Personal library with custom widgets and extensions.
 version: 0.0.1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=3.1.0 <4.0.0"
 
   flutter: ">=2.0.0"
 
@@ -12,7 +12,6 @@ dependencies:
   flutter:
     sdk: flutter
   fluttertoast: ^8.0.8
-  iphone_has_notch: ^1.0.0
 
 dev_dependencies:
   flutter_test:
