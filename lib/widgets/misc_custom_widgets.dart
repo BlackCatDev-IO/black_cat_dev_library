@@ -1,7 +1,6 @@
 library black_cat_lib;
 
 import 'package:flutter/material.dart';
-import 'package:iphone_has_notch/iphone_has_notch.dart';
 
 class PullToRefreshPage extends StatelessWidget {
   final Function onRefresh;
@@ -65,7 +64,8 @@ class _MyScrollbarState extends State<MyScrollbar> {
   void initState() {
     super.initState();
     _scrollController = widget.scrollController ?? ScrollController();
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       _updateScrollPainter(_scrollController.position);
     });
   }
@@ -126,15 +126,5 @@ class _MyScrollbarState extends State<MyScrollbar> {
         );
       },
     );
-  }
-}
-
-class NotchDependentSafeArea extends StatelessWidget {
-  final Widget child;
-  const NotchDependentSafeArea({required this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    return IphoneHasNotch.hasNotch ? child : SafeArea(child: child);
   }
 }
